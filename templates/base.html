@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block titulo%}
+        {%endblock%}
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    {%block head%}
+        <style>
+         
+        </style>
+    {%endblock%}
+</head>
+<body class="bg-black text-gray-100 font-primary">
+    {%include 'navbar.html'%} <!--inclui o nav e não a pagina-->
+    {%block content%}
+    {%endblock%}
+    <script>
+        let nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                if (window.scrollY > window.innerHeight) {
+                    nav.classList.add('invisible');
+                    nav.classList.remove('bg-gray-900')
+                    nav.classList.remove('visible');
+                } else {
+                    nav.classList.add('visible');
+                    nav.classList.add('bg-gray-900');
+                    nav.classList.remove('invisible');
+                }
+            } else {
+                nav.classList.remove('visible');
+                nav.classList.remove('invisible');
+            }
+        });
+        
+    </script>
+    <script type = "módulo"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" ></script>
+</body>
+</html>

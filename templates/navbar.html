@@ -1,0 +1,66 @@
+{% load static %}
+
+{% block head %}
+    <style>
+        nav {
+            transition: 0.4s opacity ease, 0.4s transform ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .invisible {
+            opacity: 0;
+            transform: translateY(-100px);
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        
+    </style>
+{% endblock%}
+
+<nav class="w-full flex justify-between items-center py-3 px-4 fixed z-50">
+    <div class="w-6/12">
+        <a href="/">
+            <img class="w-2/12" src="{% static 'images/hashflix.png' %}">
+        </a>
+    </div>
+        <!--Parmetro user.is_authenticated ele é usado pra saber se p usuario está logado se tiver ele retorna True se não ele retorna False-->
+        <div class="w-6/12 flex flex-nowrap justify-end">
+            {% if user.is_authenticated %} 
+            <div class="mr-2">
+                <form method="get" action="{%url 'filme:pesquisa'%}"> <!--Sei que parece estranho mas, o method get no caso, ele tá redirecionando a nossa pesquisa pra nossa página de pesquisa.html e vai passar oq eu digitar dentro o input como parametro na url do meu site-->
+                    <input type="text" name="query"class="py-1 px-2 rounded text-black bg-white" placeholder="Pesquisar">
+                    <input type="submit" value="">
+                </form>
+            </div>
+            {% endif %}
+            {% if user.is_authenticated %} 
+            <div class="mr-2">
+                <form method="post" action="{% url 'filme:logout' %}">
+                    {% csrf_token %}
+                    <button class="bg-red-600 text-white py-1 px-3 rounded-md" type="submit">Sair</button><!--A biblioteca do django atualizou por isso tem que fazer com o method post pra funcionar-->
+                </form>
+            </div>
+            {%else%}
+            <div class="mr-2">
+                <a href="{%url 'filme:login'%}">
+                <button class="bg-red-600 text-white py-1 px-3 rounded">
+                    Login
+                </button>
+                </a>
+            </div>
+            {% endif %}
+
+            {% if user.is_authenticated %} 
+                <div class="mr-2">
+                    <a href="{%url 'filme:editarperfil' request.user.pk%}"><!--request.user.pk pega o id do usuario que está logado-->
+                    <button class="bg-red-600 text-white py-1 px-3 rounded">
+                        Editar Perfil
+                    </button>
+                </a>
+                </div>
+            {% endif %}
+    </div>
+</nav>
