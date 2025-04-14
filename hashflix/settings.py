@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-!ng=3inhx0&6)-%(3qsun-3x78j3v4^bybxhue+2rhx)bs@p03
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]#link do seu site!
+ALLOWED_HOSTS = ["https://hashflixdjango-production-74f7.up.railway.app"]#link do seu site!
+
 
 
 # Application definition
@@ -94,7 +95,7 @@ DATABASES = {
 import dj_database_url
 import os #pertmite que trabalha com váriaveis de ambiente que não tem no seu cod
 
-DATABASE_URL = os.getenv("postgresql://postgres:GJghmjfTufauMSMXgRMSlXFodbPuYhBv@yamanote.proxy.rlwy.net:10136/railway")#ele só funciona se vc tiver rodando o cod lá no servidor!
+DATABASE_URL = os.getenv("URL_DO_BANCO_DE_DADOS")#ele só funciona se vc tiver rodando o cod lá no servidor!
 
 if DATABASE_URL:
     DATABASES = {
@@ -106,10 +107,13 @@ if DATABASE_URL:
 #primeiro git init 
 # git add . adiciona tds o seus arquivos
 #git -m "first commit" serve para atualizar os arquivos no github
-#pra alterações e para atualizar vc vai fazer sempre esses comandos, git add ., git -m"first commit" e git push
-#
-#
-#
+#pra alterações e para atualizar vc vai fazer sempre esses comandos, git add ., git -m"first commit" e  git push -u origin main
+#git config --global user.email "felipemenezesmk22@gmail.com"
+#git branch -M main 
+#git remote add origin link do projeto
+# git push -u origin main
+
+
 
 
 # Password validation
