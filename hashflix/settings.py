@@ -95,7 +95,7 @@ DATABASES = {
 import dj_database_url
 import os #pertmite que trabalha com váriaveis de ambiente que não tem no seu cod
 
-DATABASE_URL = os.getenv("URL_DO_BANCO_DE_DADOS")#ele só funciona se vc tiver rodando o cod lá no servidor!
+DATABASE_URL = os.getenv("URL_PÚBLICA_DO_BANCO_DE_DADOS")#ele só funciona se vc tiver rodando o cod lá no servidor!
 
 if DATABASE_URL:
     DATABASES = {
